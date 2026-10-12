@@ -1,0 +1,100 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-display: "Poppins", ui-sans-serif, system-ui, sans-serif;
+
+  /* Brand palette */
+  --color-teal-50: #ecfeff;
+  --color-teal-100: #cffafe;
+  --color-teal-200: #a5f3fc;
+  --color-teal-300: #67e8f9;
+  --color-teal-400: #22d3ee;
+  --color-teal-500: #06b6d4;
+  --color-teal-600: #0891a3; /* primary brand teal */
+  --color-teal-700: #0e7490;
+  --color-teal-800: #155e75;
+  --color-teal-900: #164e63;
+
+  --color-navy-50: #f0f5fb;
+  --color-navy-100: #dce7f4;
+  --color-navy-200: #b6cbe8;
+  --color-navy-300: #82a7d6;
+  --color-navy-400: #4f7cbf;
+  --color-navy-500: #2c5aa0;
+  --color-navy-600: #1e3a8a;
+  --color-navy-700: #152a6b;
+  --color-navy-800: #0a2540; /* primary deep navy */
+  --color-navy-900: #061730;
+
+  --color-sun-50: #fffbeb;
+  --color-sun-100: #fef3c7;
+  --color-sun-200: #fde68a;
+  --color-sun-300: #fcd34d;
+  --color-sun-400: #fbbf24;
+  --color-sun-500: #f59e0b;
+  --color-sun-600: #f97316; /* warm orange CTA */
+  --color-sun-700: #ea580c;
+
+  --radius-sm: 0.5rem;
+  --radius-md: 0.875rem;
+  --radius-lg: 1.125rem;
+  --radius-xl: 1.5rem;
+  --radius-2xl: 2rem;
+
+  --shadow-soft: 0 10px 30px -12px rgba(10, 37, 64, 0.18);
+  --shadow-lift: 0 20px 40px -18px rgba(10, 37, 64, 0.25);
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: var(--font-sans);
+  color: #0a2540;
+  background-color: #ffffff;
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-display);
+  letter-spacing: -0.01em;
+}
+
+/* Reduced motion respect */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Fade-in on scroll */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(14px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.reveal {
+  opacity: 0;
+  will-change: transform, opacity;
+}
+.reveal.in-view {
+  animation: fadeUp 0.7s ease-out forwards;
+}
+
+/* Focus rings - visible keyboard focus */
+:where(a, button, input, select, textarea, [role="button"]):focus-visible {
+  outline: 3px solid #06b6d4;
+  outline-offset: 3px;
+  border-radius: 8px;
+}
+
+/* Custom scrollbar (subtle) */
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-track { background: #f0f5fb; }
+::-webkit-scrollbar-thumb { background: #b6cbe8; border-radius: 8px; }
+::-webkit-scrollbar-thumb:hover { background: #82a7d6; }
